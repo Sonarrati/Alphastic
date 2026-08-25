@@ -889,20 +889,38 @@
         }
         .product-visual {
             position: relative;
-            aspect-ratio: 16/10;
+            width: 100%;
+            height: 220px;
             overflow: hidden;
             flex-shrink: 0;
+            border-radius: var(--radius) var(--radius) 0 0;
+            background: #0A0A0D;
+        }
+        .product-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
             transition: transform 0.6s ease;
         }
-        .product-card:hover .product-visual {
-            transform: scale(1.02);
+        .product-card:hover .product-visual img {
+            transform: scale(1.035);
         }
-        .product-visual-inner {
+        .product-visual::after {
+            content: '';
             position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(5,5,5,0.3));
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        .product-card:hover .product-visual::after {
+            opacity: 1;
         }
         .product-info {
             padding: 1rem 1.25rem 1.25rem;
@@ -1049,557 +1067,6 @@
         .product-buy-btn.free:hover {
             background: rgba(74, 222, 128, 0.2);
             box-shadow: 0 6px 20px rgba(74, 222, 128, 0.2);
-        }
-        .visual-waveform {
-            width: 80%;
-            height: 60%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3px;
-            position: relative;
-            z-index: 1;
-        }
-        .visual-waveform span {
-            display: block;
-            width: 4px;
-            border-radius: 2px;
-            background: linear-gradient(180deg, var(--electric-purple), var(--blue-purple));
-            animation: waveformPulse 1.5s ease-in-out infinite alternate;
-        }
-        .visual-waveform span:nth-child(1) {
-            height: 30%;
-            animation-delay: 0s;
-        }
-        .visual-waveform span:nth-child(2) {
-            height: 55%;
-            animation-delay: 0.1s;
-        }
-        .visual-waveform span:nth-child(3) {
-            height: 40%;
-            animation-delay: 0.2s;
-        }
-        .visual-waveform span:nth-child(4) {
-            height: 70%;
-            animation-delay: 0.3s;
-        }
-        .visual-waveform span:nth-child(5) {
-            height: 50%;
-            animation-delay: 0.4s;
-        }
-        .visual-waveform span:nth-child(6) {
-            height: 65%;
-            animation-delay: 0.5s;
-        }
-        .visual-waveform span:nth-child(7) {
-            height: 35%;
-            animation-delay: 0.6s;
-        }
-        .visual-waveform span:nth-child(8) {
-            height: 60%;
-            animation-delay: 0.7s;
-        }
-        .visual-waveform span:nth-child(9) {
-            height: 45%;
-            animation-delay: 0.8s;
-        }
-        .visual-waveform span:nth-child(10) {
-            height: 75%;
-            animation-delay: 0.9s;
-        }
-        .visual-waveform span:nth-child(11) {
-            height: 30%;
-            animation-delay: 1s;
-        }
-        .visual-waveform span:nth-child(12) {
-            height: 50%;
-            animation-delay: 1.1s;
-        }
-        @keyframes waveformPulse {
-            0% {
-                transform: scaleY(0.6);
-            }
-            100% {
-                transform: scaleY(1.2);
-            }
-        }
-        .visual-motion-trails {
-            width: 80%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-        }
-        .visual-motion-trails .trail {
-            position: absolute;
-            height: 2px;
-            border-radius: 2px;
-            background: linear-gradient(90deg, transparent, var(--electric-purple), transparent);
-            animation: trailMove 2s ease-in-out infinite;
-        }
-        .visual-motion-trails .trail:nth-child(1) {
-            width: 70%;
-            top: 30%;
-            left: 5%;
-            animation-delay: 0s;
-        }
-        .visual-motion-trails .trail:nth-child(2) {
-            width: 55%;
-            top: 50%;
-            left: 20%;
-            animation-delay: 0.4s;
-        }
-        .visual-motion-trails .trail:nth-child(3) {
-            width: 80%;
-            top: 70%;
-            left: 0%;
-            animation-delay: 0.8s;
-        }
-        @keyframes trailMove {
-            0%,
-            100% {
-                opacity: 0.3;
-                transform: translateX(0);
-            }
-            50% {
-                opacity: 0.8;
-                transform: translateX(20px);
-            }
-        }
-        .visual-energy-orb {
-            width: 60%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .visual-energy-orb .orb {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(124, 104, 255, 0.6), rgba(93, 85, 232, 0.2) 50%, transparent 70%);
-            box-shadow: 0 0 40px rgba(108, 99, 255, 0.4), 0 0 80px rgba(108, 99, 255, 0.15);
-            animation: orbPulse 2s ease-in-out infinite alternate;
-        }
-        .visual-energy-orb .orb-ring {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 1px solid rgba(108, 99, 255, 0.3);
-            animation: orbRingSpin 4s linear infinite;
-        }
-        @keyframes orbPulse {
-            0% {
-                transform: scale(0.9);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1.1);
-                opacity: 1;
-            }
-        }
-        @keyframes orbRingSpin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        .visual-overlay-lights {
-            width: 80%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .visual-overlay-lights .light-bar {
-            width: 8px;
-            border-radius: 4px;
-            background: linear-gradient(180deg, rgba(255, 200, 150, 0.7), rgba(108, 99, 255, 0.4));
-            animation: lightBarGlow 2.5s ease-in-out infinite alternate;
-        }
-        .visual-overlay-lights .light-bar:nth-child(1) {
-            height: 40%;
-            animation-delay: 0s;
-        }
-        .visual-overlay-lights .light-bar:nth-child(2) {
-            height: 65%;
-            animation-delay: 0.3s;
-        }
-        .visual-overlay-lights .light-bar:nth-child(3) {
-            height: 50%;
-            animation-delay: 0.6s;
-        }
-        .visual-overlay-lights .light-bar:nth-child(4) {
-            height: 80%;
-            animation-delay: 0.9s;
-        }
-        .visual-overlay-lights .light-bar:nth-child(5) {
-            height: 35%;
-            animation-delay: 1.2s;
-        }
-        @keyframes lightBarGlow {
-            0% {
-                opacity: 0.4;
-                transform: scaleY(0.8);
-            }
-            100% {
-                opacity: 0.9;
-                transform: scaleY(1.2);
-            }
-        }
-        .visual-icons-grid {
-            width: 70%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            align-items: center;
-            justify-content: center;
-        }
-        .visual-icons-grid .icon-tile {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: rgba(108, 99, 255, 0.1);
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: iconTileFloat 3s ease-in-out infinite alternate;
-        }
-        .visual-icons-grid .icon-tile svg {
-            width: 16px;
-            height: 16px;
-            color: var(--electric-purple);
-        }
-        .visual-icons-grid .icon-tile:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        .visual-icons-grid .icon-tile:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-        .visual-icons-grid .icon-tile:nth-child(4) {
-            animation-delay: 0.9s;
-        }
-        .visual-icons-grid .icon-tile:nth-child(5) {
-            animation-delay: 1.2s;
-        }
-        .visual-icons-grid .icon-tile:nth-child(6) {
-            animation-delay: 1.5s;
-        }
-        @keyframes iconTileFloat {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-6px);
-            }
-        }
-        .visual-film-strip {
-            width: 85%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-        .visual-film-strip .film-frame {
-            flex: 1;
-            aspect-ratio: 4/3;
-            border-radius: 4px;
-            background: rgba(108, 99, 255, 0.15);
-            border: 1px solid rgba(108, 99, 255, 0.25);
-            animation: filmFrameGlow 2s ease-in-out infinite alternate;
-        }
-        .visual-film-strip .film-frame:nth-child(2) {
-            animation-delay: 0.3s;
-        }
-        .visual-film-strip .film-frame:nth-child(3) {
-            animation-delay: 0.6s;
-        }
-        .visual-film-strip .film-frame:nth-child(4) {
-            animation-delay: 0.9s;
-        }
-        @keyframes filmFrameGlow {
-            0% {
-                background: rgba(108, 99, 255, 0.1);
-            }
-            100% {
-                background: rgba(108, 99, 255, 0.25);
-            }
-        }
-        .visual-color-spectrum {
-            width: 80%;
-            height: 50%;
-            position: relative;
-            z-index: 1;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #FF6B6B, #FFE66D, #4ECDC4, #6C63FF, #A78BFA, #FF6B6B);
-            background-size: 300% 300%;
-            animation: spectrumShift 4s ease-in-out infinite alternate;
-            opacity: 0.85;
-        }
-        @keyframes spectrumShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 100% 50%;
-            }
-        }
-        .visual-reel-frames {
-            width: 70%;
-            height: 70%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            justify-content: center;
-        }
-        .visual-reel-frames .reel-frame {
-            width: 40px;
-            aspect-ratio: 9/16;
-            border-radius: 6px;
-            background: rgba(108, 99, 255, 0.12);
-            border: 1px solid rgba(108, 99, 255, 0.3);
-            animation: reelFramePulse 2.5s ease-in-out infinite alternate;
-        }
-        .visual-reel-frames .reel-frame:nth-child(2) {
-            animation-delay: 0.4s;
-            height: 90%;
-        }
-        .visual-reel-frames .reel-frame:nth-child(3) {
-            animation-delay: 0.8s;
-            height: 70%;
-        }
-        @keyframes reelFramePulse {
-            0% {
-                opacity: 0.5;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(-8px);
-            }
-        }
-        .visual-silhouette {
-            width: 50%;
-            height: 65%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .visual-silhouette .silhouette-circle {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(108, 99, 255, 0.2);
-            border: 2px solid rgba(108, 99, 255, 0.4);
-            position: relative;
-            animation: silhouetteFloat 3s ease-in-out infinite alternate;
-        }
-        .visual-silhouette .silhouette-circle::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(108, 99, 255, 0.5);
-        }
-        @keyframes silhouetteFloat {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-10px);
-            }
-        }
-        .visual-neural {
-            width: 70%;
-            height: 60%;
-            position: relative;
-            z-index: 1;
-        }
-        .visual-neural .neural-node {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--electric-purple);
-            animation: neuralPulse 2s ease-in-out infinite alternate;
-        }
-        .visual-neural .neural-node:nth-child(1) {
-            top: 20%;
-            left: 30%;
-        }
-        .visual-neural .neural-node:nth-child(2) {
-            top: 50%;
-            left: 50%;
-            animation-delay: 0.3s;
-        }
-        .visual-neural .neural-node:nth-child(3) {
-            top: 30%;
-            left: 65%;
-            animation-delay: 0.6s;
-        }
-        .visual-neural .neural-node:nth-child(4) {
-            top: 65%;
-            left: 40%;
-            animation-delay: 0.9s;
-        }
-        .visual-neural .neural-node:nth-child(5) {
-            top: 60%;
-            left: 60%;
-            animation-delay: 1.2s;
-        }
-        .visual-neural .neural-line {
-            position: absolute;
-            height: 1px;
-            background: rgba(108, 99, 255, 0.3);
-            transform-origin: left center;
-        }
-        .visual-neural .neural-line:nth-child(6) {
-            width: 30%;
-            top: 22%;
-            left: 30%;
-            transform: rotate(30deg);
-        }
-        .visual-neural .neural-line:nth-child(7) {
-            width: 25%;
-            top: 52%;
-            left: 50%;
-            transform: rotate(-20deg);
-        }
-        .visual-neural .neural-line:nth-child(8) {
-            width: 35%;
-            top: 32%;
-            left: 65%;
-            transform: rotate(45deg);
-        }
-        @keyframes neuralPulse {
-            0% {
-                opacity: 0.4;
-                box-shadow: 0 0 4px rgba(108, 99, 255, 0.3);
-            }
-            100% {
-                opacity: 1;
-                box-shadow: 0 0 12px rgba(108, 99, 255, 0.6);
-            }
-        }
-        .visual-data {
-            width: 70%;
-            height: 55%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: flex-end;
-            gap: 5px;
-            justify-content: center;
-        }
-        .visual-data .data-bar {
-            width: 12px;
-            border-radius: 3px 3px 0 0;
-            background: linear-gradient(180deg, var(--electric-purple), rgba(108, 99, 255, 0.3));
-            animation: dataBarGrow 2s ease-in-out infinite alternate;
-        }
-        .visual-data .data-bar:nth-child(1) {
-            height: 30%;
-            animation-delay: 0s;
-        }
-        .visual-data .data-bar:nth-child(2) {
-            height: 55%;
-            animation-delay: 0.2s;
-        }
-        .visual-data .data-bar:nth-child(3) {
-            height: 40%;
-            animation-delay: 0.4s;
-        }
-        .visual-data .data-bar:nth-child(4) {
-            height: 70%;
-            animation-delay: 0.6s;
-        }
-        .visual-data .data-bar:nth-child(5) {
-            height: 50%;
-            animation-delay: 0.8s;
-        }
-        @keyframes dataBarGrow {
-            0% {
-                transform: scaleY(0.7);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scaleY(1.2);
-                opacity: 1;
-            }
-        }
-        .visual-timeline {
-            width: 80%;
-            height: 50%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .visual-timeline .timeline-segment {
-            flex: 1;
-            height: 6px;
-            border-radius: 3px;
-            background: rgba(108, 99, 255, 0.25);
-            position: relative;
-        }
-        .visual-timeline .timeline-segment::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--electric-purple);
-        }
-        .visual-timeline .timeline-segment:nth-child(2) {
-            height: 10px;
-        }
-        .visual-timeline .timeline-segment:nth-child(3) {
-            height: 4px;
-        }
-        .visual-timeline .timeline-segment:nth-child(4) {
-            height: 8px;
-        }
-        .visual-typography {
-            width: 70%;
-            height: 55%;
-            position: relative;
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 2rem;
-            color: rgba(255, 255, 255, 0.15);
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(255, 255, 255, 0.03));
-            border-radius: 8px;
-            border: 1px solid rgba(108, 99, 255, 0.2);
         }
         .free-products {
             padding: 4rem 2rem;
@@ -2164,7 +1631,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Product Modal */
         .product-modal-overlay {
             position: fixed;
@@ -2258,9 +1724,11 @@
             align-items: center;
             justify-content: center;
         }
-        .modal-visual-section .product-visual-inner {
-            position: absolute;
-            inset: 0;
+        .modal-visual-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.6s ease;
         }
         .modal-info-section {
             padding: 0 2rem;
@@ -2474,7 +1942,6 @@
         .modal-sticky-btn:hover .arrow {
             transform: translateX(3px);
         }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner {
@@ -2606,6 +2073,9 @@
                 min-width: 10px;
                 flex: 0.5;
             }
+            .product-visual {
+                height: 200px;
+            }
             .product-modal-overlay {
                 padding: 0;
                 align-items: flex-end;
@@ -2671,6 +2141,9 @@
             }
             .modal-price {
                 font-size: 1.5rem;
+            }
+            .product-visual {
+                height: 180px;
             }
         }
     </style>
@@ -3069,7 +2542,7 @@
 
     <script>
         (function() {
-            // Product data with full details
+            // Product data with image filenames
             const paidProducts = [{
                 id: 'sfx-audio',
                 name: 'SFX & Audio Pack',
@@ -3078,7 +2551,7 @@
                 keyItems: ['Whoosh', 'Hits', 'Impacts', 'Risers', 'Drops', 'Cinematic SFX'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%F0%9F%8E%A7-ultimate-sfx---audio-pack-%E2%80%94-10-000--premium-sounds',
-                visualType: 'waveform',
+                image: 'file_0000000021c481fabb7248a97bc20af1.png',
                 whatsInside: ['10,000+ SFX', 'Whoosh', 'Hits', 'Impacts', 'Risers', 'Drops', 'Cinematic SFX', 'Background Music'],
                 bestFor: ['Reels', 'Shorts', 'YouTube', 'Cinematic edits', 'Motion graphics'],
                 keyFeatures: ['Massive 10K+ sound library', 'Pro-grade cinematic quality', 'Drag-and-drop ready', 'Organized by category']
@@ -3090,7 +2563,7 @@
                 keyItems: ['Viral transitions', 'Zoom', 'Shake', 'Glitch', 'Paper animation'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%E2%9A%A1-ultimate-transitions---motion-graphics-pack-%F0%9F%94%A5',
-                visualType: 'motion',
+                image: 'file_00000000e8d481fabfc0beba74ac87dc.png',
                 whatsInside: ['Viral transitions', 'Smooth transitions', 'Paper animation', 'Motion graphics', 'Zoom', 'Shake', 'Glitch'],
                 bestFor: ['Velocity edits', 'Beat edits', 'Reels', 'Shorts', 'Motion design'],
                 keyFeatures: ['Fast-paced transitions', 'Smooth motion effects', 'Modern editing styles', 'Beat-sync friendly assets']
@@ -3102,7 +2575,7 @@
                 keyItems: ['Fire', 'Smoke', 'Lightning', 'Particles', 'Explosions', 'Magic'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%F0%9F%92%A5-vfx-effects-pack-%E2%80%94-1000--premium-visual-effects',
-                visualType: 'orb',
+                image: 'file_000000007c8882119643e24d23d92d09.png',
                 whatsInside: ['Fire', 'Smoke', 'Sparks', 'Lightning', 'Energy', 'Dust', 'Particles', 'Explosions', 'Magic effects'],
                 bestFor: ['Cinematic edits', 'Action edits', 'Gaming edits', 'Reels', 'Shorts'],
                 keyFeatures: ['1,000+ premium effects', 'Cinematic quality', 'Drag-and-drop ready', 'Wide variety of styles']
@@ -3114,7 +2587,7 @@
                 keyItems: ['Film burns', 'Light leaks', 'Particles', 'Blends', 'Broken glass'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%E2%9C%A8-500--overlays---effects-pack-%E2%80%94-make-your-edits-hit-different-%F0%9F%94%A5',
-                visualType: 'overlay',
+                image: 'file_000000002d0481fab668ee4d6298c552.png',
                 whatsInside: ['500+ overlays', 'Film burns', 'Light leaks', 'Particles', 'Blends', 'Cinematic overlays', 'Broken glass'],
                 bestFor: ['Cinematic edits', 'Music videos', 'Reels', 'Shorts', 'Transitions'],
                 keyFeatures: ['Cinematic texture overlays', 'Drag-and-drop ready', '500+ variations', 'Pro-grade quality']
@@ -3126,7 +2599,7 @@
                 keyItems: ['Glowing icons', '3D icons', '3D hands', 'Arrows', 'Counting numbers'],
                 price: 79,
                 link: 'https://superprofile.bio/vp/%E2%9C%A8-icons--emojis---elements-pack',
-                visualType: 'icons',
+                image: 'file_00000000524c820ba5103f28e0d97bf5.png',
                 whatsInside: ['200+ glowing icons', 'Premium icons', '3D icons', '3D hands', '3D emojis', 'Arrows', 'Counting numbers'],
                 bestFor: ['Reels', 'Educational videos', 'YouTube', 'Motion graphics'],
                 keyFeatures: ['200+ glowing icons', '3D elements included', 'Drag-and-drop ready', 'Modern design language']
@@ -3138,7 +2611,7 @@
                 keyItems: ['Motion backgrounds', 'PNGs', 'Green screen', 'GIFs', 'Anime assets'],
                 price: 79,
                 link: 'https://superprofile.bio/vp/%F0%9F%8C%84-background---visual-assets-pack-%E2%80%94-create-without-limits',
-                visualType: 'film',
+                image: 'file_000000005c9481faaf888490f5d42ad2.png',
                 whatsInside: ['Motion backgrounds', 'Images', 'PNGs', 'Green screen', 'GIFs', 'Anime assets', 'Illustration assets'],
                 bestFor: ['Background replacement', 'Reels', 'Shorts', 'Creative edits'],
                 keyFeatures: ['Diverse background styles', 'Green screen ready', 'High resolution', 'Anime and illustration assets']
@@ -3150,7 +2623,7 @@
                 keyItems: ['Luxury clips', 'Cinematic B-roll', 'Lifestyle', 'Aesthetic visuals'],
                 price: 149,
                 link: 'https://superprofile.bio/vp/%F0%9F%8E%9E%EF%B8%8F-b-roll---luxury-clips-%E2%80%94-25k--premium-visuals',
-                visualType: 'filmstrip',
+                image: 'file_00000000af0481faadfa7d3fa5ed5c7e.png',
                 whatsInside: ['25K+ luxury clips', 'Cinematic B-roll', 'Lifestyle footage', 'Aesthetic visuals', 'Trending visuals'],
                 bestFor: ['Luxury edits', 'Lifestyle content', 'Reels', 'YouTube', 'Shorts'],
                 keyFeatures: ['25K+ premium clips', 'Cinematic quality', 'Aesthetic variety', 'Trending visuals']
@@ -3162,7 +2635,7 @@
                 keyItems: ['Alight Motion CC', 'LUTs', 'Color grades', 'Presets', '4K CC'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%F0%9F%8E%A8-cc--luts---presets-pack',
-                visualType: 'spectrum',
+                image: 'file_00000000962881fa8f42c4f73c421d3f.png',
                 whatsInside: ['Alight Motion CC', 'Wink CC', 'AE CC', '4K CC', 'LUTs', 'Color grades', 'Presets'],
                 bestFor: ['Color grading', 'Cinematic edits', 'Reels', 'Shorts'],
                 keyFeatures: ['Pro color grades', 'Multiple CC formats', 'Cinematic LUTs', 'Easy to apply']
@@ -3174,7 +2647,7 @@
                 keyItems: ['Viral animation reels', 'Motivation reels', 'Samay Raina reels'],
                 price: 149,
                 link: 'https://superprofile.bio/vp/viral-reels-pack-%E2%80%94-6-000--viral-reels---materials',
-                visualType: 'reel',
+                image: 'file_00000000f8d881fab88102b3abce2466.png',
                 whatsInside: ['5,000+ viral animation reels', '500+ motivation reels', '700+ Samay Raina reels', 'Viral reel materials'],
                 bestFor: ['Content inspiration', 'Reel creation', 'Short-form editing', 'Trend research'],
                 keyFeatures: ['6,000+ viral reels', 'Trend-ready content', 'Inspiration library', 'Diverse categories']
@@ -3186,7 +2659,7 @@
                 keyItems: ['Faceless reels', 'Faceless videos', 'B-Roll', 'Content visuals'],
                 price: 199,
                 link: 'https://superprofile.bio/vp/faceless-creator-pack-%E2%80%93-10-000--premium-clips',
-                visualType: 'silhouette',
+                image: 'file_00000000e238820ba0cd26511cb180e6.png',
                 whatsInside: ['10,000+ faceless reels', 'Faceless videos', 'B-roll', 'Content visuals'],
                 bestFor: ['Faceless channels', 'YouTube Shorts', 'Instagram Reels', 'Content automation'],
                 keyFeatures: ['10,000+ clips', 'Faceless ready', 'Channel starter kit', 'Diverse content styles']
@@ -3198,7 +2671,7 @@
                 keyItems: ['AI girl reels', 'AI story reels', 'Hulk AI reels', 'AI characters'],
                 price: 149,
                 link: 'https://superprofile.bio/vp/ai-reels-pack-%E2%80%94-1000--viral-ai-visuals-%F0%9F%A4%96%F0%9F%94%A5',
-                visualType: 'neural',
+                image: 'file_00000000b2788211989f8965c9f5f0cf.png',
                 whatsInside: ['500+ AI girl reels', 'AI story reels', 'Hulk AI reels', 'AI characters', 'AI visuals'],
                 bestFor: ['AI content', 'Story reels', 'Viral short-form videos', 'Creative experiments'],
                 keyFeatures: ['1,000+ AI visuals', 'Viral ready', 'Unique AI characters', 'Story-driven content']
@@ -3210,7 +2683,7 @@
                 keyItems: ['3D knowledge reels', 'Fact reels', 'Educational visuals'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/%F0%9F%A7%A0-knowledge---fact-reels-pack',
-                visualType: 'data',
+                image: 'file_00000000a7ec820b9e7e1dbe0f84f7bf.png',
                 whatsInside: ['3D knowledge reels', 'Fact reels', 'Educational visuals', 'Explainer visuals'],
                 bestFor: ['Education creators', 'Fact channels', 'Explainer videos', 'Knowledge content'],
                 keyFeatures: ['Educational visuals', '3D knowledge reels', 'Fact-based content', 'Explainer ready']
@@ -3222,7 +2695,7 @@
                 keyItems: ['Trending templates', 'Beat-sync', 'Velocity', 'Lyrics', 'Photo edit'],
                 price: 99,
                 link: 'https://superprofile.bio/vp/capcut---alight-motion-templates-pack',
-                visualType: 'timeline',
+                image: 'file_0000000085e08208a515c4ed0f485e2a.png',
                 whatsInside: ['Trending templates', 'Beat-sync templates', 'Velocity templates', 'Lyrics templates', 'Photo-edit templates', 'Reel templates'],
                 bestFor: ['Fast editing', 'Reels', 'Shorts', 'Beat edits', 'Mobile editing'],
                 keyFeatures: ['Trending template styles', 'Beat-sync ready', 'Mobile editing optimized', 'Drag-and-drop']
@@ -3236,7 +2709,7 @@
                 keyItems: ['Premium fonts', 'Font collection', 'Typography resources'],
                 price: 0,
                 link: 'https://superprofile.bio/vp/turn-simple-ideas-into-scroll-stopping-thumbnails-%E2%80%94-for-free-',
-                visualType: 'typography',
+                image: 'file_00000000164882119423580e4fd7758d.png',
                 whatsInside: ['1,500+ premium fonts', '4,000+ font collection', 'Typography resources'],
                 bestFor: ['Thumbnails', 'Motion graphics', 'Reels', 'Design work'],
                 keyFeatures: ['5,500+ font assets', 'Commercial use ready', 'Multiple styles', 'Curated collection']
@@ -3248,7 +2721,7 @@
                 keyItems: ['Thumbnail materials', 'Elements', 'Images', 'Design resources'],
                 price: 0,
                 link: 'https://superprofile.bio/vp/turn-simple-ideas-into-scroll-stopping-thumbnails-%E2%80%94-for-free-',
-                visualType: 'icons',
+                image: 'file_000000008e4881fab0d54f82a4b32d65.png',
                 whatsInside: ['Thumbnail materials', 'Elements', 'Images', 'Design resources'],
                 bestFor: ['YouTube thumbnails', 'Reels covers', 'Design work'],
                 keyFeatures: ['3,000+ resources', 'Thumbnail ready', 'Multiple styles', 'Free forever']
@@ -3260,7 +2733,7 @@
                 keyItems: ['Hooks', 'CTA templates', 'Caption templates', 'Reel ideas', 'Content prompts'],
                 price: 0,
                 link: 'https://superprofile.bio/vp/%F0%9F%A7%A0-reel-creator-kit-%E2%80%94-free',
-                visualType: 'reel',
+                image: 'file_00000000af8c81fa9b2c0ff6f36be762.png',
                 whatsInside: ['Hooks', 'CTA templates', 'Caption templates', 'Reel ideas', 'Content prompts', 'Storytelling templates'],
                 bestFor: ['Reel creators', 'Content planning', 'Short-form growth', 'Idea generation'],
                 keyFeatures: ['50+ templates', 'Hook formulas', 'CTA patterns', 'Story frameworks']
@@ -3275,41 +2748,6 @@
             function calculateOriginalPrice(sellingPrice, discount) {
                 const original = sellingPrice / (1 - discount / 100);
                 return Math.round(original / 5) * 5;
-            }
-
-            function generateVisualHTML(visualType) {
-                switch (visualType) {
-                    case 'waveform':
-                        return `<div class="product-visual-inner"><div class="visual-waveform">${'<span></span>'.repeat(12)}</div></div>`;
-                    case 'motion':
-                        return `<div class="product-visual-inner"><div class="visual-motion-trails"><div class="trail"></div><div class="trail"></div><div class="trail"></div></div></div>`;
-                    case 'orb':
-                        return `<div class="product-visual-inner"><div class="visual-energy-orb"><div class="orb-ring"></div><div class="orb"></div></div></div>`;
-                    case 'overlay':
-                        return `<div class="product-visual-inner"><div class="visual-overlay-lights">${'<div class="light-bar"></div>'.repeat(5)}</div></div>`;
-                    case 'icons':
-                        return `<div class="product-visual-inner"><div class="visual-icons-grid">${'<div class="icon-tile"><svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="3"/></svg></div>'.repeat(6)}</div></div>`;
-                    case 'film':
-                        return `<div class="product-visual-inner"><div class="visual-film-strip">${'<div class="film-frame"></div>'.repeat(4)}</div></div>`;
-                    case 'filmstrip':
-                        return `<div class="product-visual-inner"><div class="visual-film-strip">${'<div class="film-frame"></div>'.repeat(4)}</div></div>`;
-                    case 'spectrum':
-                        return `<div class="product-visual-inner"><div class="visual-color-spectrum"></div></div>`;
-                    case 'reel':
-                        return `<div class="product-visual-inner"><div class="visual-reel-frames"><div class="reel-frame"></div><div class="reel-frame"></div><div class="reel-frame"></div></div></div>`;
-                    case 'silhouette':
-                        return `<div class="product-visual-inner"><div class="visual-silhouette"><div class="silhouette-circle"></div></div></div>`;
-                    case 'neural':
-                        return `<div class="product-visual-inner"><div class="visual-neural"><div class="neural-node"></div><div class="neural-node"></div><div class="neural-node"></div><div class="neural-node"></div><div class="neural-node"></div><div class="neural-line"></div><div class="neural-line"></div><div class="neural-line"></div></div></div>`;
-                    case 'data':
-                        return `<div class="product-visual-inner"><div class="visual-data">${'<div class="data-bar"></div>'.repeat(5)}</div></div>`;
-                    case 'timeline':
-                        return `<div class="product-visual-inner"><div class="visual-timeline">${'<div class="timeline-segment"></div>'.repeat(4)}</div></div>`;
-                    case 'typography':
-                        return `<div class="product-visual-inner"><div class="visual-typography">Aa</div></div>`;
-                    default:
-                        return `<div class="product-visual-inner"><div class="visual-waveform">${'<span></span>'.repeat(8)}</div></div>`;
-                }
             }
 
             function generateProductCard(product, isFree) {
@@ -3333,7 +2771,7 @@
                 const cardHTML = `
                     <div class="product-card" role="listitem" data-category="${product.category}" data-name="${product.name.toLowerCase()}" data-description="${product.description.toLowerCase()}" data-product-id="${product.id}">
                         <div class="product-visual">
-                            ${generateVisualHTML(product.visualType)}
+                            <img src="${product.image}" alt="${product.name} cover" loading="lazy">
                         </div>
                         <div class="product-info">
                             <span class="product-category">${product.category}</span>
@@ -3385,12 +2823,7 @@
                 const closeBtn = document.getElementById('modalCloseBtn');
                 if (!overlay || !modal || !modalContent || !closeBtn) return;
 
-                let currentProduct = null;
-                let currentIsFree = false;
-
                 function openModal(product, isFree) {
-                    currentProduct = product;
-                    currentIsFree = isFree;
                     const discount = isFree ? null : discounts[product.id];
                     const originalPrice = isFree ? null : calculateOriginalPrice(product.price, discount);
 
@@ -3436,7 +2869,7 @@
 
                     modalContent.innerHTML = `
                         <div class="modal-visual-section">
-                            ${generateVisualHTML(product.visualType)}
+                            <img src="${product.image}" alt="${product.name} artwork">
                         </div>
                         <div class="modal-info-section">
                             <span class="modal-category-label">${product.category}</span>
@@ -3457,21 +2890,17 @@
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
 
-                    // Focus close button
                     setTimeout(() => closeBtn.focus(), 100);
                 }
 
                 function closeModal() {
                     overlay.classList.remove('open');
                     document.body.style.overflow = '';
-                    currentProduct = null;
-                    currentIsFree = false;
                     setTimeout(() => {
                         modalContent.innerHTML = '';
                     }, 300);
                 }
 
-                // Event listeners
                 closeBtn.addEventListener('click', closeModal);
 
                 overlay.addEventListener('click', (e) => {
@@ -3486,7 +2915,6 @@
                     }
                 });
 
-                // Delegate clicks for DETAILS buttons
                 document.addEventListener('click', (e) => {
                     const detailsBtn = e.target.closest('.product-details-btn');
                     if (detailsBtn) {
