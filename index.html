@@ -890,37 +890,23 @@
         .product-visual {
             position: relative;
             width: 100%;
-            height: 220px;
+            aspect-ratio: 1 / 1;
+            height: auto;
             overflow: hidden;
             flex-shrink: 0;
             border-radius: var(--radius) var(--radius) 0 0;
-            background: #0A0A0D;
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.08), #0D0D12 65%);
         }
         .product-visual img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            object-position: center;
             display: block;
             transition: transform 0.6s ease;
         }
         .product-card:hover .product-visual img {
-            transform: scale(1.035);
-        }
-        .product-visual::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, transparent 60%, rgba(5,5,5,0.3));
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1;
-        }
-        .product-card:hover .product-visual::after {
-            opacity: 1;
+            transform: scale(1.025);
         }
         .product-info {
             padding: 1rem 1.25rem 1.25rem;
@@ -1716,7 +1702,7 @@
         }
         .modal-visual-section {
             position: relative;
-            background: var(--card);
+            background: radial-gradient(circle at center, rgba(108, 99, 255, 0.08), #0D0D12 65%);
             border-radius: 12px;
             overflow: hidden;
             min-height: 350px;
@@ -1728,6 +1714,7 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
+            object-position: center;
             transition: transform 0.6s ease;
         }
         .modal-info-section {
@@ -2073,9 +2060,6 @@
                 min-width: 10px;
                 flex: 0.5;
             }
-            .product-visual {
-                height: 200px;
-            }
             .product-modal-overlay {
                 padding: 0;
                 align-items: flex-end;
@@ -2141,9 +2125,6 @@
             }
             .modal-price {
                 font-size: 1.5rem;
-            }
-            .product-visual {
-                height: 180px;
             }
         }
     </style>
@@ -2542,7 +2523,6 @@
 
     <script>
         (function() {
-            // Product data with image filenames
             const paidProducts = [{
                 id: 'sfx-audio',
                 name: 'SFX & Audio Pack',
@@ -2815,7 +2795,6 @@
                 });
             }
 
-            // Modal system
             function initModalSystem() {
                 const overlay = document.getElementById('productModalOverlay');
                 const modal = document.getElementById('productModal');
@@ -2928,7 +2907,6 @@
                 });
             }
 
-            // Announcement bar rotation
             function rotateAnnouncements() {
                 const messages = document.querySelectorAll('.announcement-message');
                 if (!messages.length) return;
@@ -2945,7 +2923,6 @@
                 }, 4000);
             }
 
-            // Navbar scroll
             function initNavbarScroll() {
                 const navbar = document.getElementById('navbar');
                 if (!navbar) return;
@@ -2958,7 +2935,6 @@
                 }, { passive: true });
             }
 
-            // Mobile menu
             function initMobileMenu() {
                 const hamburger = document.getElementById('hamburgerBtn');
                 const mobileMenu = document.getElementById('mobileMenu');
@@ -2988,7 +2964,6 @@
                 });
             }
 
-            // Search and filter
             function initSearchAndFilter() {
                 const searchInput = document.getElementById('searchInput');
                 const filterBtns = document.querySelectorAll('.filter-btn');
@@ -3038,7 +3013,6 @@
                 }
             }
 
-            // Scroll reveal
             function initScrollReveal() {
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -3078,7 +3052,6 @@
                 }
             }
 
-            // FAQ accordion
             function initFAQ() {
                 const faqItems = document.querySelectorAll('.faq-item');
                 faqItems.forEach(item => {
@@ -3099,7 +3072,6 @@
                 });
             }
 
-            // Init
             document.addEventListener('DOMContentLoaded', () => {
                 renderProducts();
                 initModalSystem();
