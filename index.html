@@ -2243,11 +2243,21 @@
         <p class="statement-text" id="statementText">ONE LIBRARY.<br><span class="statement-accent">ENDLESS WAYS TO CREATE.</span></p>
     </section>
 
-    <!-- Product Library -->
-    <section class="product-library" id="library" aria-label="Product library">
-        <p class="section-label">THE LIBRARY</p>
-        <h2 class="section-headline">YOUR CREATIVE<br>ARSENAL.</h2>
-        <p class="section-subheadline">SFX. VFX. Reels. B-roll. Templates. Everything you need to stop building from scratch.</p>
+    <!-- Free Products Section (Now First) -->
+    <section class="free-products" id="free" aria-label="Free products">
+        <p class="section-label">START FREE</p>
+        <h2 class="section-headline">START WITH FREE.</h2>
+        <p class="section-subheadline">No paywall. No catch. Just create.</p>
+        <div class="free-grid" id="freeGrid" role="list">
+            <!-- Free products injected by JS -->
+        </div>
+    </section>
+
+    <!-- Premium Library Section (Now Second) -->
+    <section class="product-library" id="library" aria-label="Premium library">
+        <p class="section-label">THE PREMIUM LIBRARY</p>
+        <h2 class="section-headline">LEVEL UP YOUR EDIT.</h2>
+        <p class="section-subheadline">More assets. More possibilities. Less time hunting for them.</p>
         <div class="library-search" role="search">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21L16.65 16.65"/></svg>
             <input type="text" id="searchInput" placeholder="Search your next asset..." aria-label="Search products">
@@ -2269,20 +2279,11 @@
             <button class="filter-btn" data-filter="TEMPLATES" role="tab" aria-selected="false">Templates</button>
         </div>
         <div class="product-grid" id="productGrid" role="list">
-            <!-- Products injected by JS -->
+            <!-- Paid products injected by JS -->
         </div>
     </section>
 
-    <!-- Free Products -->
-    <section class="free-products" id="free" aria-label="Free products">
-        <p class="section-label">START FREE</p>
-        <h2 class="section-headline">NO PAYWALL.<br>NO CATCH. JUST CREATE.</h2>
-        <div class="free-grid" id="freeGrid" role="list">
-            <!-- Free products injected by JS -->
-        </div>
-    </section>
-
-    <!-- Ultimate Pack -->
+    <!-- Ultimate Pack Section (Now Third) -->
     <section class="ultimate-pack" id="ultimate" aria-label="Ultimate editing pack">
         <div class="ultimate-pack-inner">
             <div class="ultimate-pack-content">
